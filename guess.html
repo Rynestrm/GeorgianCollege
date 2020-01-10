@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>COMP1073 Client-Side JavaScript</title>
+    <link rel="stylesheet" href="guess.css" />
+  </head>
+
+  <body>
+    <h1>Number Guessing Game</h1>
+    <p>I have picked a random number between 1 and 100. You have 10 chances to guess the number.</p>
+
+    <!-- Guessing form controls -->
+    <label for="guessField">Enter a guess: </label>
+    <input type="number" id="guessField">
+    <button>Submit guess</button>
+
+    <!-- Elements to contain feedback for user -->
+    <section>
+      <p id="guesses"></p>
+      <p id="lastResult"></p>
+      <p id="lowOrHigh"></p>
+    </section>
+
+    <script>
+      let chosenNumber = Math.floor(Math.random() * 100);
+
+      let submitButton = document.querySelector('button');
+
+      let lowOrHigh = document.querySelector('#lowOrHigh');
+
+      let guess = document.querySelector('#guessField');
+
+      function decideIfWon(){
+        if (guess.value < chosenNumber){
+        lowOrHigh.textContent = 'Too Low :(';
+      } else if (guess.value > chosenNumber ){
+        lowOrHigh.textContent = 'Too High :(';
+      } else {
+        lowOrHigh.textContent = "You are Correct!";
+      }
+    }
+
+      submitButton.addEventListener('click', decideIfWon);
+
+    </script>
+  </body>
+</html>
